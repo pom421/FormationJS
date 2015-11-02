@@ -1,0 +1,290 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<html>
+
+<head>
+    <style>
+        table {
+            border: 1px solid red;
+        }
+        
+        tr {
+            cell
+        }
+        
+        img {
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
+
+    <h1 class="urgent">Mon site qui déchire</h1>
+
+    <h2 id="sous-titre">Le sous-titre qui casse des briques</h2>
+
+    <table class="toto">
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Adresse</th>
+            <th>Point</th>
+        </tr>
+        <tr>
+            <td>Martin</td>
+            <td>Pierre</td>
+            <td>10 rue de la Louve 75012 Paris</td>
+            <td>65</td>
+        </tr>
+        <tr>
+            <td>Bourdon</td>
+            <td>Sigismond</td>
+            <td>5 avenue des Batignolles</td>
+            <td>75017 Paris</td>
+        </tr>
+        <tr>
+            <td>Ledru</td>
+            <td>Jacques</td>
+            <td>10 avenue du Chat errant 91100 Cergy</td>
+            <td>55</td>
+        </tr>
+        <tr>
+            <td>Hochet</td>
+            <td>Ric</td>
+            <td>3 rue de Rivoli 75001 Paris</td>
+            <td>44</td>
+        </tr>
+    </table>
+
+    <div>Bonjour les <span class="urgent">gens</span></div>
+    <div>Ici Siri et <span class="important">compagnie</span></div>
+    <div>Ici Siri et <span class="important urgent">compagnie</span></div>
+
+    <p>La coupe du monde de rugby a vu la victoire de la Nouvelle Zélande en finale contre l'Australie faisant de l'équipe des All Blacks l'équipe la plus titrée de l'histoire.</p>
+
+    <p>La petite finale a été gagnée par l'Afrique du Sud.</p>
+    
+    <script>
+        $("p").css("background-color", "red")
+    </script>
+
+    
+    <p>La France elle, sans commentaire.</p>
+
+    <ul>
+        <li>Menu 1</li>
+        <li>Menu 2</li>
+        <li>Menu 3</li>
+        <li id="ici">Menu 4</li>
+        <li>Menu 5</li>
+        <li>Menu 6</li>
+        <li>Menu 7</li>
+        <li>Menu 8</li>
+        <li>Menu 9</li>
+        <li>Menu 10</li>
+        <ol>
+            <li>Menu 1</li>
+            <li>Menu 2</li>
+            <li>Menu 3</li>
+            <li>Menu 4</li>
+        </ol>
+    </ul>
+    
+    <h1 style="color:red">Début</h1>
+    
+    <ul id="debut">
+        <li>Menu</li>
+        <li>Menu</li>
+        <li>Menu</li>
+        <ul>
+            <li>Menu</li>
+            <li>Menu</li>
+            <li>Menu</li>
+        </ul>
+        <li>Menu</li>
+        <li>Menu</li>
+        <ul>
+            <li>Menu</li>
+            <li>Menu</li>
+            <li>Menu</li>
+        </ul>
+    </ul>
+    
+    <p title="Coucou Toto">
+        Coucou Toto!
+        <span title="OK">Alerte verte!</span>
+    </p>
+    
+    <p>
+        Coucou Titi!
+        <span title="Alert!">Alerte rouge!</span>
+    </p>
+    
+    <p>
+        <span title="Bonjour">Bonjour</span>
+    </p>
+    <p>
+        <span title="Bon jour">Bon jour</span>
+    </p>    
+    
+    <img src="http://lorempicsum.com/futurama/350/200/1" alt="alternatif">
+    
+    <img alt="alternatif">
+    
+    <h1>Liens</h1>
+    
+    <ul>
+        <li><a href="http://www.yahoo.fr">Yahoo.fr</a></li>
+        <li><a href="file:///C:/Users/Administrateur/Desktop/Formation%20JS%20jQuery/tp1.html">Fichier local</a></li>
+        <li><a href="C:\Users\Administrateur\Desktop\github-git-cheat-sheet.pdf">Cheat sheet pdf</a></li>
+        <li><a href="http://www.personal.psu.edu/jul229/mini.jpg" alt="Image Simpsons"> simpson</a></li>
+    </ul>
+    
+    <form>
+        <input type="checkbox" checked />
+        <label>Ok</label>
+    </form>
+    
+<table id="ma-table">
+    <tr>
+        <th>cell</th>
+        <td>cell</td>
+        <td>cell</td>
+        <td>cell</td>
+        <td>cell</td>
+    </tr>
+</table>
+   
+   
+<table id="damier">
+    <tr>
+        <td>Elément</td>
+        <td>Elément</td>
+        <td>Elément</td>
+        <td>Elément</td>
+    </tr>
+    <tr>
+        <td>Elément</td>
+        <td>Elément</td>
+        <td>Elément</td>
+        <td>Elément</td>
+    </tr>
+    <tr>
+        <td>Elément</td>
+        <td>Elément</td>
+        <td>Elément</td>
+        <td>Elément</td>
+    </tr>
+    <tr>
+        <td>Elément</td>
+        <td>Elément</td>
+        <td>Elément</td>
+        <td>Elément</td>
+    </tr>
+
+</table>
+
+<ul id="ma-liste">
+    <li>toto 1</li>
+    <li>toto 2</li>
+    <li>toto 3</li>
+    <li>toto 4</li>
+    <li>toto 5</li>
+    <li>toto 6</li>
+    <li>toto 7</li>
+    <li>toto 8</li>
+    <li>toto 9</li>
+    <li>toto 10</li>
+</ul>
+
+<ul id="ma-liste-pyjama">
+    <li>toto 1</li>
+    <li>toto 2</li>
+    <li>toto 3</li>
+    <li>toto 4</li>
+    <li>toto 5</li>
+    <li>toto 6</li>
+    <li>toto 7</li>
+    <li>toto 8</li>
+    <li>toto 9</li>
+    <li>toto 10</li>
+</ul>
+
+<ul id="liste-rainbow">
+    <li>élément 01</li>
+    <li>élément 02</li>
+    <li>élément 03</li>
+    <li>élément 04</li>
+    <li>élément 05</li>
+    <li>élément 06</li>
+    <li>élément 07</li>
+    <li>élément 08</li>
+    <li>élément 09</li>
+    <li>élément 10</li>
+</ul>
+
+<script>
+  /*  $("#sous-titre").css("background-color", "grey");
+    $(".important").css("background-color", "green");
+    $(".urgent").css("background-color", "red");
+    $("span.urgent").css("background-color", "grey");
+    $("h1,h2").css("color", "lightgray");
+    //$("ul.urgent > li").css("background-color", "blue");
+    //$("#ici~li").css("background-color", "purple");
+    //$("#ici+li").css("background-color", "yellow");
+    
+    //$("ul>li+li").css("background-color", "yellow");
+    
+    $("ul#debut>ul~ul>li~li").css("background-color", "red");
+    
+    $("p[title]").css("background-color", "red");
+    
+    $("img[src]").css("background-color", "red");
+    $("span[title='Alert!']").css("background-color", "green");
+    $("span[title~='jour']").css("background-color", "blue");
+    $("span[title*='jour']").css("background-color", "yellow");
+    //$("span[title^='Bon']").css("background-color", "purple");
+    $("span[title$=' jour']").css("background-color", "purple");
+    $("span[title!='Bonjour']").css("background-color", "grey");
+    
+    
+    // liens
+    $("a[href^='http://']").css("background-color", "red");
+    $("a[href^='file://']").css("background-color", "green");
+    $("a[href$='.pdf']").css("background-color", "yellow");
+    $("a[href$='.jpg'],a[href$='.gif'],a[href$='.png']").css("background-color", "blue");
+    
+    $("input:checked+label").css("background-color", "red");
+    */
+    
+    $("ul#debut>li:first-child").css("background-color", "red");
+    $("ul#debut>:last-child").css("background-color", "yellow");
+    
+    $("#ma-table>tbody>tr>:first-child").css("background-color", "purple");
+    $("#ma-table>tbody>tr>td:last-child").css("background-color", "yellow");
+    $("#ma-table>tbody>tr>td:first-of-type").css("background-color", "green");
+    
+    $("#damier tr:first-child td:first-child").css("background-color", "yellow");
+    $("#damier tr:first-child td:last-child").css("background-color", "yellow");
+    $("#damier tr:last-child td:first-child").css("background-color", "yellow");
+    $("#damier tr:last-child td:last-child").css("background-color", "yellow");
+    
+    $("#damier tr:first-child>td:nth-child(3)").css("background-color", "purple");  
+    
+    // on triche un peu car on repaint plusieurs fois les éléments mais on peut difficilement faire autrement
+    $("#ma-liste li").css("background-color", "yellow");
+    $("#ma-liste li:nth-child(4)~li").css("background-color", "purple");
+    $("#ma-liste li:nth-child(7)~li").css("background-color", "green");
+    
+    $("#ma-liste-pyjama :nth-child(2n)").css("background-color", "lightgrey");
+    
+    $("#liste-rainbow :nth-child(3n)").css("background-color", "blue");
+    $("#liste-rainbow :nth-child(3n+1)").css("background-color", "gray");
+    $("#liste-rainbow :nth-child(3n+2)").css("background-color", "purple");
+    
+</script>
+
+</html>
+</body>
