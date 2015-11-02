@@ -4,12 +4,14 @@
 <head>
     <style>
         table {
-            border: 1px solid red;
+            border: 1px solid #469ef7;
         }
         
         tr {
             cell
         }
+        
+        // test
         
         img {
             border: 1px solid grey;
@@ -73,8 +75,8 @@
     
     <p>La France elle, sans commentaire.</p>
 
-    <ul>
-        <li>Menu 1</li>
+    <ul id="liste-imbriquee">
+        <li>liste-imbriquee</li>
         <li>Menu 2</li>
         <li>Menu 3</li>
         <li id="ici">Menu 4</li>
@@ -90,6 +92,8 @@
             <li>Menu 3</li>
             <li>Menu 4</li>
         </ol>
+        <li>Menu 11</li>
+        <li>Menu 12</li>
     </ul>
     
     <h1 style="color:red">Début</h1>
@@ -264,7 +268,7 @@
     
     $("#ma-table>tbody>tr>:first-child").css("background-color", "purple");
     $("#ma-table>tbody>tr>td:last-child").css("background-color", "yellow");
-    $("#ma-table>tbody>tr>td:first-of-type").css("background-color", "green");
+    $("#ma-table>tbody>tr>td:first-of-type").css("background-color", "#4a0080");
     
     $("#damier tr:first-child td:first-child").css("background-color", "yellow");
     $("#damier tr:first-child td:last-child").css("background-color", "yellow");
@@ -283,6 +287,12 @@
     $("#liste-rainbow :nth-child(3n)").css("background-color", "blue");
     $("#liste-rainbow :nth-child(3n+1)").css("background-color", "gray");
     $("#liste-rainbow :nth-child(3n+2)").css("background-color", "purple");
+    
+    
+    $("#ma-liste li:eq(5)").css("background-color", "cyan");
+    $("#ma-liste li:gt(5)").css("background-color", "#59b760");
+    
+    $("#liste-imbriquee li:eq(11)").css("background-color", "green");
     
 </script>
 
