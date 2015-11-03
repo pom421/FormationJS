@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    
+    <title>Document</title>
+    <style>
+
+        body {
+            padding: 15px;
+        }
+        
+        #maTable {
+            margin: 16px 0 0 0;
+            text-align: center;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .white {
+            background-color: white;
+        }
+        .template {
+            visibility: hidden;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+    
+    <button id="ajouterLigne" class="btn btn-primary btn-lng">Ajouter ligne</button>
+    
+    <table id="maTable" class="table table-bordered">
+        <tr>
+            <td class="green">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td><button class="colorize">Colorier</button></td>
+            <td><button class="del">Supprimer</button></td>
+        </tr>
+        <tr>
+            <td class="green">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td><button class="colorize">Colorier</button></td>
+            <td><button class="del">Supprimer</button></td>
+        </tr>
+        <tr>
+            <td class="green">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td><button class="colorize">Colorier</button></td>
+            <td><button class="del">Supprimer</button></td>
+        </tr>
+        <tr>
+            <td class="green">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td><button class="colorize">Colorier</button></td>
+            <td><button class="del">Supprimer</button></td>
+        </tr>
+        <tr>
+            <td class="green">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td><button class="colorize">Colorier</button></td>
+            <td><button class="del">Supprimer</button></td>
+        </tr>
+        <tfoot class="template">
+            <tr>
+                <td class="green">01</td>
+                <td>02</td>
+                <td>03</td>
+                <td><button class="colorize">Colorier</button></td>
+                <td><button class="del">Supprimer</button></td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+        var tbody = $("#maTable tbody");
+        
+        tbody.on("click", ".del", function supprimerLigne(e) {
+           $(e.target).closest("tr").remove();
+        });
+        
+        tbody.on("click", ".colorize", function alternerCouleurs(e) {
+            var cell = $(e.target).closest("tr").find("td:first-of-type");
+            if (cell.hasClass("white")) {
+                cell.removeClass("white");
+                cell.addClass("red");
+            }
+            cell.toggleClass("red green");
+        });
+        
+        tbody.on("dblclick", ".colorize", function reinitialiserCouleurs(e) {
+            // faire $(this) == $(e.target)
+            var cell = $(e.target).closest("tr").find("td:first-of-type");
+            cell.removeClass("red green");
+            cell.addClass("white");
+        });
+
+        $("#ajouterLigne").on("click", function ajouterLigne(e) {
+            tbody.append($("#maTable>tfoot>tr").clone());
+        });
+        
+        
+        
+    </script>
+
+</body>
+
+</html>

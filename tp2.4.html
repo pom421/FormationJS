@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    
+    <title>Document</title>
+    <style>
+
+        body {
+            padding: 15px;
+        }
+        
+        #maTable {
+            margin: 16px 0 0 0;
+            text-align: center;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .white {
+            background-color: white;
+        }
+        .template {
+            visibility: hidden;
+        }
+        .disabled {
+            background-color: red;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+      <button id="toggle">ON/OFF</button>
+   
+    <ul id="monUl">
+       <li>
+           <a href="http://www.yahoo.fr">Yahoo</a>
+       </li>
+       <li>
+           <a href="http://www.koreben.info">Korben</a>
+       </li>
+       <li>
+           <a href="http://www.clubic.com">Clubic</a>
+       </li>
+       <li>
+           <a href="http://www.lexpage.net">Lexpage</a>
+       </li>
+       </li>
+       
+    </ul>
+   
+   <form action="" id="mon-form">
+       <input type=text id="kg" />Kg de pomme de terre
+       <input type="text" id="popup"/>
+       <span id="mon-span">Message</span>
+       <input type="submit" />
+   </form>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+        
+        $("#toggle").on("click", function(e) {
+            $("#toggle").toggleClass("disabled");
+        });
+        
+        $("#monUl").on("click", "a", function(e) {
+            if($("#toggle").hasClass("disabled")) {
+                e.preventDefault();
+            }
+        });
+        
+/*
+        $("#mon-form").on("keyup", function(e) {
+            console.log(e);
+        });
+*/
+/*
+        $("#mon-form").on("keydown", function(e) {
+            console.log(e.charCode);
+        });
+*/
+/*
+        $("#mon-form").on("keypress", function(e) {
+            console.log(e);
+        });
+*/
+        $("#mon-form").on("keypress", "#kg", function(e) {
+            if(e.charCode > 48 && e.charCode < 58) {
+                console.log("on trouve ", e.charCode);
+            }
+            else {
+                e.preventDefault(); 
+            } 
+                
+        });
+
+        $("#mon-span").hide();
+        $("#popup").on("focus", function(e) {
+            console.log("on trouve ",  $(e.target.nextElementSibling));
+           $(e.target.nextElementSibling).show();
+        });
+        
+        $("#popup").on("blur", function(e) {
+           $("#mon-span").hide();
+        }); 
+        
+        $("#mon-form").on("submit", function(e) {
+            console.log("this = ", $(this));
+            console.log("e = ", e);
+            var valeur = $("#mon-form :first-child").val();
+            console.log("on trouve ", valeur);
+            if(valeur.length > 10)  {
+                console.log("Erreur, trop grand");
+                e.preventDefault();
+            }
+            e.preventDefault();
+        });
+        
+        // possibilité de créer des évènements personnalisés (permet aussi de lancer des évènements du navigateur)
+        $("#mon-form").trigger("bob");
+        $("#mon-form").on("bob", function(e) {
+           ... 
+        });
+    </script>
+
+</body>
+
+</html>
