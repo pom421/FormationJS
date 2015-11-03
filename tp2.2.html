@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    
+    <title>Document</title>
+    <style>
+
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .white {
+            background-color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi explicabo <b>eius obcaecati</b> aspernatur iure rerum harum placeat at non sunt, asperiores? Omnis quaerat id, non nisi similique accusantium natus tempore!</p>
+    
+    <button id="fire">FIRE!</button>
+    
+    <div id="target" class="red">Cliquez moi</div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+        
+        $("b").on("click", function(event) {
+            console.log(event);
+        });
+        
+        $("#fire").on("click", function(event) {
+            console.log(event.type);
+        });
+        
+        $("#fire").on("dblclick", function(event) {
+            console.log(event.type);
+        });
+        
+        $("#fire").on("mousedown", function(event) {
+            console.log(event.type);
+        });
+        
+        $("#fire").on("mouseup", function(event) {
+            console.log(event.type);
+        });
+        
+        
+        var monDiv = $("#target");
+
+        monDiv.on("click", function(event) {
+            if (monDiv.hasClass("white")) {
+                monDiv.removeClass("white");
+                monDiv.addClass("red");
+            }
+            monDiv.toggleClass("red green");
+        });
+        
+        monDiv.on("dblclick", function(event) {
+            monDiv.removeClass("red green");
+            monDiv.addClass("white");
+        });
+
+    </script>
+
+</body>
+
+</html>
