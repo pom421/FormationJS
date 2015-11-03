@@ -18,6 +18,9 @@
         .white {
             background-color: white;
         }
+        .template {
+            visibility: hidden;
+        }
     </style>
 
 </head>
@@ -25,9 +28,54 @@
 <body>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi explicabo <b>eius obcaecati</b> aspernatur iure rerum harum placeat at non sunt, asperiores? Omnis quaerat id, non nisi similique accusantium natus tempore!</p>
     
-    <button id="fire">FIRE!</button>
+    <button id="ajouterLigne" class="btn btn-primary btn-lng">Ajouter ligne</button>
     
-    <div id="target" class="red">Cliquez moi</div>
+    <table id="maTable" class="table table-bordered">
+        <tr>
+            <td class="green">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>01<button class="colorize">Colorier</button></td>
+            <td>01<button class="del">Supprimer</button></td>
+        </tr>
+        <tr>
+            <td class="green">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>01<button class="colorize">Colorier</button></td>
+            <td>02<button class="del">Supprimer</button></td>
+        </tr>
+        <tr>
+            <td class="green">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>01<button class="colorize">Colorier</button></td>
+            <td>03<button class="del">Supprimer</button></td>
+        </tr>
+        <tr>
+            <td class="green">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>01<button class="colorize">Colorier</button></td>
+            <td>04<button class="del">Supprimer</button></td>
+        </tr>
+        <tr>
+            <td class="green">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>01<button class="colorize">Colorier</button></td>
+            <td>05<button class="del">Supprimer</button></td>
+        </tr>
+        <tfoot class="template">
+            <tr>
+                <td class="green">01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>01<button class="colorize">Colorier</button></td>
+                <td>01<button class="del">Supprimer</button></td>
+            </tr>
+        </tfoot>
+    </table>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -37,6 +85,7 @@
             console.log(event);
         });
         
+/*
         $("#fire").on("click", function(event) {
             console.log(event.type);
         });
@@ -52,23 +101,48 @@
         $("#fire").on("mouseup", function(event) {
             console.log(event.type);
         });
+*/
         
         
-        var monDiv = $("#target");
-
-        monDiv.on("click", function(event) {
-            if (monDiv.hasClass("white")) {
-                monDiv.removeClass("white");
-                monDiv.addClass("red");
+        var boutons = $(".del");
+        
+        var boutonsCol = $(".colorize");
+        
+        boutons.on("click", function supprimerLigne(event) {
+           $(this).closest("tr").remove();
+        });
+        
+        boutonsCol.on("click", function alternerCouleurs(event) {
+            var cell = $(this).closest("tr").find("td:first-of-type");
+            console.log("on trouve " + cell);
+            if (cell.hasClass("white")) {
+                cell.removeClass("white");
+                cell.addClass("red");
             }
-            monDiv.toggleClass("red green");
+            cell.toggleClass("red green");
         });
         
-        monDiv.on("dblclick", function(event) {
-            monDiv.removeClass("red green");
-            monDiv.addClass("white");
+        boutonsCol.on("dblclick", function reinitialiserCouleurs(event) {
+            // faire $(this) == $(e.target)
+            var cell = $(this).closest("tr").find("td:first-of-type");
+            cell.removeClass("red green");
+            cell.addClass("white");
         });
 
+        
+/*
+        boutonsCol.on("click", function colorierPremiereCellule() {
+           $(this).closest("tr").find("td:first-of-type").addClass("red");
+        });
+*/
+
+        $("#ajouterLigne").on("click", function ajouterLigne(evenement) {
+            // clone(true) permet de copier le gestionnaire d'évènements en plus des éléments HTML
+            $("#maTable").append($("#maTable>tfoot>tr").clone(true));
+        });
+        
+        
+        
     </script>
 
 </body>
