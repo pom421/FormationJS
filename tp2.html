@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .statut {
+            background-color: red;
+        }
+        
+        .statut-accepte {
+            background-color: green;
+        }
+    </style>
+    
+</head>
+<body>
+  
+   
+   <h1>Téléchargement</h1>
+   
+   <h2>Avertissement</h2>
+   
+   <h2>JDK 1.5</h2>
+   
+   <h3>1.5.21</h3>
+   
+   <h3>1.5.33</h3>
+   
+   <h2>JDK 1.6</h2>
+   
+   <h3>1.6.2</h3>
+   
+   <h3>1.6.4</h3>
+   
+   <b>Table des matières</b>
+   
+   <ul id="tdm"></ul>
+   
+   <p>
+       <button onclick="accepterCGV();">OK</button> <span class="statut">J'accepte les CGV</span>
+   </p>
+   
+    <a href="#" id="lien">Lien à télécharger</a>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+    <script>
+
+        var tdm = $("#tdm");
+        
+        $("h1,h2,h3").each(function() {
+            var element = $(this);
+            tdm.append("<li>" + element.text() + "</li>");
+        })
+        
+        //$("#tdm").html(code);
+        
+/*
+        $("h2").replaceWith(function() { 
+            var elt = $(this);
+            return "<h3>" + elt.text() + "</h3>";
+        });
+*/
+  
+        $("h2").each(function() {
+            var elt = $(this);
+            elt.replaceWith("<h3>" + elt.text() +"</h3>");
+        });
+        
+                
+        function accepterCGV() {
+            $(".statut").addClass("statut-accepte");
+            $("#lien").attr("href", "http://www.yahoo.fr");
+        }
+    </script>
+    
+</body>
+</html>
