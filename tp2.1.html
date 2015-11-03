@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .template {
+            visibility: hidden;
+        }
+    </style>
+
+</head>
+
+<body>
+
+   <button onclick="ajouterLigne();">Ajouter une ligne</button>
+         
+   <table id="ma-table">
+       <thead>
+           <tr>
+               <td>01</td>
+               <td>02</td>
+               <td>03</td>
+               <td>04</td>
+           </tr>
+       </thead>
+       <tbody>
+           <tr>
+               <td>01</td>
+               <td>02</td>
+               <td>03</td>
+               <td>04</td>
+           </tr>
+           <tr>
+               <td>01</td>
+               <td>02</td>
+               <td>03</td>
+               <td>04</td>
+           </tr>
+           <tr>
+               <td>01</td>
+               <td>02</td>
+               <td>03</td>
+               <td>04</td>
+           </tr>
+           <tr>
+               <td>01</td>
+               <td>02</td>
+               <td>03</td>
+               <td>Dernier élément 04</td>
+           </tr>
+       </tbody>
+       <tfoot class="template">
+           <tr>
+               <td>Nom du site</td>
+               <td>Adresse</td>
+               <td><button>Modifier</button></td>
+               <td><a href="#">Lien site</a></td>
+           </tr>
+       </tfoot>
+   </table>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+        
+        function ajouterLigne() {
+            var modele = $("#ma-table>tfoot>tr").clone();
+            $("#ma-table>tbody").append(modele);
+        }
+        
+    </script>
+
+</body>
+
+</html>
