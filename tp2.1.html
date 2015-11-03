@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    
     <title>Document</title>
     <style>
         .template {
@@ -19,36 +22,41 @@
    <table id="ma-table">
        <thead>
            <tr>
-               <td>01</td>
+               <td>Ligne 1 01</td>
                <td>02</td>
                <td>03</td>
-               <td>04</td>
+               <td><span>04</span></td>
+               <td><button onclick="supprimerLigne(this)">Supprimer</button></td>
            </tr>
        </thead>
        <tbody>
            <tr>
-               <td>01</td>
+               <td>Ligne 2 01</td>
                <td>02</td>
                <td>03</td>
-               <td>04</td>
+               <td><span>04</span></td>
+               <td><button onclick="supprimerLigne(this)">Supprimer</button></td>
            </tr>
            <tr>
-               <td>01</td>
+               <td>Ligne 3 01</td>
                <td>02</td>
                <td>03</td>
-               <td>04</td>
+               <td><span>04</span></td>
+               <td><button onclick="supprimerLigne(this)">Supprimer</button></td>
            </tr>
            <tr>
-               <td>01</td>
+               <td>Ligne 4 </td>
                <td>02</td>
                <td>03</td>
-               <td>04</td>
+               <td><span>04</span></td>
+               <td><button onclick="supprimerLigne(this)">Supprimer</button></td>
            </tr>
            <tr>
-               <td>01</td>
+               <td>Ligne 5 </td>
                <td>02</td>
                <td>03</td>
-               <td>Dernier élément 04</td>
+               <td>Dernier élément <span>04</span></td>
+               <td><button onclick="supprimerLigne(this)">Supprimer</button></td>
            </tr>
        </tbody>
        <tfoot class="template">
@@ -57,9 +65,27 @@
                <td>Adresse</td>
                <td><button>Modifier</button></td>
                <td><a href="#">Lien site</a></td>
+               <td><button onclick="supprimerLigne(this)">Supprimer</button></td>
            </tr>
        </tfoot>
    </table>
+   
+   <div>
+       <p>
+           1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex alias, quis laborum porro dolorum. Quia magni dignissimos, veniam maxime earum molestiae vitae, perspiciatis repellendus autem quo recusandae placeat, ut sapiente.
+       </p>
+       
+       <button onclick="fermerParagraphe(this)">Fermer</button>
+   </div>
+   
+    
+    <div>
+               <p>
+           2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex alias, quis laborum porro dolorum. Quia magni dignissimos, veniam maxime earum molestiae vitae, perspiciatis repellendus autem quo recusandae placeat, ut sapiente.
+       </p>
+       
+       <button onclick="fermerParagraphe(this)">Fermer</button>
+   </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -70,6 +96,16 @@
             $("#ma-table>tbody").append(modele);
         }
         
+        $("span").wrap("<b><i></i></b>");
+        
+        function fermerParagraphe(element) {
+            $(element).parent().remove();
+        }
+        
+        function supprimerLigne(element) {
+            //$(element).parent().parent().remove();
+            $(element).closest("tr").remove();
+        }
     </script>
 
 </body>
