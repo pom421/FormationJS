@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <title>Document</title>
+    <style>
+        body {
+            padding: 15px;
+        }
+        
+        #maTable {
+            margin: 16px 0 0 0;
+            text-align: center;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .green {
+            background-color: green;
+        }
+        
+        .white {
+            background-color: white;
+        }
+        
+        .template {
+            visibility: hidden;
+        }
+        
+        .disabled {
+            background-color: red;
+        }
+        
+        .collapsed {
+            display: none;
+        }
+        .collapsable {
+            border-left: 6px solid lightgrey;
+            margin: 0;
+            padding: 0 9px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="root">
+
+        <div class="container">
+            <h6>Chapitre 1</h6>
+
+            <div class="container">
+                <h6>Chapitre 1.1</h6>
+
+                <div class="container">
+                    <h6>Chapitre 1.1.1</h6>
+                </div>
+            </div>
+
+            <div class="container">
+                <h6>Chapitre 1.2</h6>
+            </div>
+        </div>
+
+        <div class="container">
+            <h6>Chapitre 2</h6>
+
+            <div class="container">
+                <h6>Chapitre 2.1</h6>
+
+                <div class="container">
+                    <h6>Chapitre 2.1.1</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h6>Chapitre 3</h6>
+
+            <div class="container">
+                <h6>Chapitre 3.1</h6>
+            </div>
+        </div>
+    </div>
+
+    <div>un div normal</div>
+
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+    // on n'affiche que les chapitres de 1er niveau
+    $(".container .container").addClass("collapsed");
+
+    $("#root").on("click", function (e) {
+        console.log("on trouve ", e.target);
+        //console.log("frères ", $(e.target).nextSibling);
+        console.log("on trouve ", $(e.target).closest(".container").children("div:first-of-type").toggleClass("collapsed"));
+        
+    });
+</script>
+
+
+</html>
