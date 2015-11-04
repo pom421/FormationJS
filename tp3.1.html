@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Mon titre</h1>
+    
+    <div id="contenu">A remplacer</div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+    
+    var x = '{"nom": "Pom", "contrat": [12, 23, 45]}';
+    
+    var y = JSON.parse(x);
+    
+    console.log(x);
+    console.log(y);
+    
+    $("#contenu").load("fragment.html", function() {
+       console.log("fin de chargement");
+    });
+
+</script>
+
+</html>
