@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <title>Liste des mails</title>
+    <style>
+        body {
+            margin: 16px;
+        }
+
+        .focus {
+            background-color: skyblue;
+        }
+        
+        #last {
+            float: left;
+        }
+        #next {
+            float: right;
+        }
+        
+        .clear {
+            clear: both;
+            border: 0;
+            margin: 8px 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Liste des mails</h1>
+    
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id mail</th>
+                <th>Action</th>
+            </tr>
+        </tbody>
+        <tr id="1" class="focus">
+            <td>01</td>
+            <td class="do">Lire</td>
+        </tr>
+        <tr id="2">
+            <td>02</td>
+            <td class="do">Lire</td>
+        </tr>
+        <tr id="3">
+            <td>03</td>
+            <td class="do">Lire</td>
+        </tr>
+        <tr id="4">
+            <td>04</td>
+            <td class="do">Lire</td>
+        </tr>
+        <tr id="5">
+            <td>05</td>
+            <td class="do">Lire</td>
+        </tr>
+    </table>
+
+    <div>
+    
+    <button id="last">Précédent</button>
+    <button id="next">Suivant</button>
+
+    <hr class="clear" />    
+    
+    <h2>Preview</h2>
+    <blockquote>
+    
+    <div id="preview">
+        <p id="preview-de"></p>
+        <p id="preview-date"></p>
+        <p id="preview-sujet"></p>
+        <p id="preview-contenu"></p>
+    </div>
+    </blockquote>
+    
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+    var MAX_MESSAGES = 5;
+    var idFocus = 1;
+    
+    chargerMail(idFocus);
+    
+    // charge un fichier html dans la zone de preview
+    function chargerMail(idMail) {
+/*
+        $("#preview").load("mail" + idMail + ".html", function(e) {
+            console.log("Fin chargement du message " + idMail);
+        });
+*/
+        $.getJSON("mail" + idFocus + ".json", function(data) {
+           $("#preview-de").text(data.de);
+            $("#preview-date").text(data.date);
+            $("#preview-sujet").text(data.sujet);
+            $("#preview-contenu").text(data.contenu);
+        });
+    }
+
+    // mise à jour du idFocus
+    function gererFocus(nouvelId) {
+        if (idFocus) {
+            $("#" + idFocus).removeClass("focus");
+        }
+        $("#" + nouvelId).addClass("focus");
+        idFocus = nouvelId;
+    }
+    
+    // décrémente idFocus
+    function lastIdFocus() {
+        if(idFocus == 1) {
+            idFocus = MAX_MESSAGES;
+        }
+        else {
+            idFocus--;
+        }
+    }
+    
+    // incrémente idFocus
+    function nextIdFocus() {
+        if(idFocus == MAX_MESSAGES) {
+            idFocus = 1;
+        }
+        else {
+            idFocus++;
+        }
+    }
+    
+    $("tbody").on("click", ".do", function(e) {
+        var id = $(e.target).closest("tr").attr("id");
+        chargerMail(id);
+        gererFocus(id);
+    });
+    
+    $("#last").on("click", function(e) {
+        $("#" + idFocus).removeClass("focus");
+        
+        lastIdFocus();
+        
+        $("#" + idFocus).addClass("focus");
+        chargerMail(idFocus);
+    });
+    
+    $("#next").on("click", function(e) {
+        $("#" + idFocus).removeClass("focus");
+        
+        nextIdFocus();
+        
+        $("#" + idFocus).addClass("focus");
+        chargerMail(idFocus);
+    });    
+
+</script>
+
+</html>
