@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <title>Météo</title>
+    <style>
+        body {
+            margin: 16px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<table id="liste-villes">
+    <tr id="1" data-nomVille="Chicago, il">
+        <td class="do">Chicago</td>
+        <td>Voir météo</td>
+    </tr>
+    <tr id="2" data-nomVille="New York, il">
+        <td class="do">New York</td>
+        <td>Voir météo</td>
+    </tr>
+    <tr>    
+        <td class="do">Washington</td>
+        <td>Voir météo</td>
+    </tr>
+    <tr>
+        <td class="do">Phoenix</td>
+        <td>Voir météo</td>
+    </tr>
+    <tr>
+        <td class="do">Seattle</td>
+        <td>Voir météo</td>
+    </tr>
+</table>
+
+</body>
+
+<h1>Météo</h1>
+
+<p id="meteo"></p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+    
+    $("body").prepend("<div class=alerter>Chargement en cours</div>");
+    
+    $(document).on("ajaxStart", function(e) {
+       $(".alerter").show();
+    });
+    
+    $(document).on("ajaxStop", function(e) {
+       $(".alerter").hide("slow");
+    });
+    
+    var urlOrig = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+    
+    var url1 = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22";
+    var url2 = "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+    
+    $("#liste-villes>tbody").on("click", ".do", function(e) {
+        var ville = $(e.target).text();
+        $.getJSON(url1 + ville + url2, function(data) {
+           console.log("Fin d'apel météo");
+            console.log("data ", data);
+            
+            console.log("temps trouvé ", data.query.results.channel.item.forecast[0].text);
+            $("#meteo").text(data.query.results.channel.item.forecast[0].text);
+        });
+        
+    });
+    
+</script>
+
+</html>
+
+
+
