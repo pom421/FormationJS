@@ -36,33 +36,13 @@
 
     <h1>Liste des mails</h1>
     
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="liste-messages">
         <tbody>
             <tr>
                 <th>Id mail</th>
                 <th>Action</th>
             </tr>
         </tbody>
-        <tr id="1" class="focus">
-            <td>01</td>
-            <td class="do">Lire</td>
-        </tr>
-        <tr id="2">
-            <td>02</td>
-            <td class="do">Lire</td>
-        </tr>
-        <tr id="3">
-            <td>03</td>
-            <td class="do">Lire</td>
-        </tr>
-        <tr id="4">
-            <td>04</td>
-            <td class="do">Lire</td>
-        </tr>
-        <tr id="5">
-            <td>05</td>
-            <td class="do">Lire</td>
-        </tr>
     </table>
 
     <div>
@@ -92,8 +72,9 @@
 <script>
     var MAX_MESSAGES = 5;
     var idFocus = 1;
+    var files;
     
-    chargerMail(idFocus);
+    //chargerMail(idFocus);
     
     // charge un fichier html dans la zone de preview
     function chargerMail(idMail) {
@@ -102,6 +83,8 @@
             console.log("Fin chargement du message " + idMail);
         });
 */
+        console.log("nomail ", $("#" + idMail).data("nomMail"));
+        
         $.getJSON("mail" + idFocus + ".json", function(data) {
            $("#preview-de").text(data.de);
             $("#preview-date").text(data.date);
@@ -139,9 +122,10 @@
         }
     }
     
-    $("tbody").on("click", ".do", function(e) {
+    $("#liste-messages tbody").on("click", ".do", function(e) {
+        console.log("ici");
         var id = $(e.target).closest("tr").attr("id");
-        chargerMail(id);
+        chargerMail(id);    
         gererFocus(id);
     });
     
@@ -161,7 +145,26 @@
         
         $("#" + idFocus).addClass("focus");
         chargerMail(idFocus);
-    });    
+    });
+    
+    var tbody = $("#liste-messages>tbody");
+    $.getJSON("liste-messages.json", function(data) {
+        files = data.files;
+        
+        //console.log("files = ", files);
+        var i = 0;
+        $.each(data.files, function(k, v) {
+            tbody.append("<tr class=\"do\" id="+ i + "><td>" + v + "</td><td>Lire</td></tr>");
+            $("#" + i).data("nomMail", v);
+            
+            //console.log("et aussi ", $("#" + i).data("nomMail"));
+            i++;
+        });
+        
+    });
+    
+    //console.log("on trouve à la fin", files["01"]);
+    
 
 </script>
 
