@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <button onclick="ajouterLI();">Ajouter</button> 
-    <button onclick="supprimerLI();">Supprimer</button> 
-    <button onclick="lancerAlerte();">Alerter</button> 
+    <button onclick="ajouterLI();">Ajouter</button>
+    <button onclick="supprimerLI();">Supprimer</button>
+    <button onclick="lancerAlerte();">Alerter</button>
 
     <ul id="ma-liste">
         <li>toto 01</li>
@@ -27,8 +27,10 @@
         <li>toto 08</li>
         <li>toto 09</li>
         <li>toto 10</li>
+        <li>toto 11</li>
+        <li>toto 12</li>
     </ul>
-    
+
     <p>
         <b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores ab ad placeat, debitis, quae ducimus quo modi, sint nostrum maiores nisi, dignissimos consectetur quaerat numquam ea architecto assumenda voluptate blanditiis.</b>
     </p>
@@ -39,25 +41,25 @@
         console.log("on trouve " + $("li:eq(3)").text());
 
         console.log("on trouve " + $("li:eq(3)"));
-        
+
         $("li:eq(4)").html("<a href=\"http://www.yahoo.fr\">Lien</a>");
-        
+
         $("b").append("<i>toto</i>").prepend("<i>titi</i>").before("<i>tata</i>").after("<i>tutu</i>");
-        
+
         function ajouterLI() {
             $("#ma-liste").append("<li>Nouvel élément</li>");
         }
         function supprimerLI() {
             $("#ma-liste li:last-child").remove();
         }
-       
+
         function lancerAlerte() {
             //var index = Math.floor((Math.random() * $("#ma-liste li").length) + 1);
             //$("#ma-liste li:nth-child(" + index + ")").Class("urgent");
-            
+
             $("#ma-liste li:first-child").toggleClass("urgent");
         }
-        
+
     </script>
 
 </body>
